@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "authdomain",
+  "version": "${version}",
+  "name": "Authdomain",
+  "description": "Check domain when players log in the game",
+  "authors": [
+    "Forgot_Dream"
+  ],
+  "contact": {
+    "website": "https://github.com/Forgot-Dream/Authdomain",
+    "repo": "https://github.com/Forgot-Dream/Authdomain"
+  },
+  "license": "LGPL-3.0",
+  "icon": "assets/authdomain/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+    ],
+    "main": [
+      "cn.forgotdream.authdomain.Authdomain"
+    ]
+  },
+  "mixins": [
+    "authdomain.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.1",
+    "minecraft": "1.16.x"
+  }
+}

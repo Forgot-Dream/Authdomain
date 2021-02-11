@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "cn.forgotdream.authdomain.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinInterfaceHandshakeC2SPacket",
+    "MixinServerHandshakeNetworkHandler"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
