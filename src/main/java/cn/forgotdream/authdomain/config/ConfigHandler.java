@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import static cn.forgotdream.authdomain.util.Print.print_warning;
+
 public class ConfigHandler {
     private static final String CONFIG_PATH = "./config/Authdomain.json";
     public List<String> AllowedDomainList;
@@ -35,7 +37,12 @@ public class ConfigHandler {
                 FileWriter fileWriter = new FileWriter(settingsjson);
                 fileWriter.write("{\"AllowedDomain\":[\"127.0.0.1\",\n\"localhost\"\n]}");
                 fileWriter.close();
-                System.out.println("[AuthDomain] 配置文件不存在，已自动生成");
+                //Happy Lazy
+                JsonArray data = new JsonParser().parse(new FileReader(settingsjson)).getAsJsonObject().getAsJsonArray("AllowedDomain");
+                Gson gson = new Gson();
+                this.AllowedDomainList = gson.fromJson(data.toString(), new TypeToken<List<String>>() {
+                }.getType());
+                print_warning("配置文件不存在，已自动生成，载入默认配置");
             } catch (IOException e) {
                 e.printStackTrace();
             }
