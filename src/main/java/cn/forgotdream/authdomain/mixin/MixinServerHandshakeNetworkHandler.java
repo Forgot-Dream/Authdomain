@@ -21,6 +21,6 @@ public abstract class MixinServerHandshakeNetworkHandler implements MixinInterfa
     @Inject(method = "onHandshake", at = @At("HEAD"))
     private void CheckDomain(HandshakeC2SPacket packet, CallbackInfo cl) {
         String address = ((MixinInterfaceHandshakeC2SPacket) packet).getAddress();
-        check(address, this.connection);
+        check(address, connection);
     }
 }

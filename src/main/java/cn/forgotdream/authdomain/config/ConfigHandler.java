@@ -23,9 +23,9 @@ public class ConfigHandler {
         File settingsjson = new File(CONFIG_PATH);
         if (settingsjson.isFile() && settingsjson.exists()) {
             try {
-                JsonArray data = new JsonParser().parse(new FileReader(settingsjson)).getAsJsonObject().getAsJsonArray();
+                JsonArray data = new JsonParser().parse(new FileReader(settingsjson)).getAsJsonObject().getAsJsonArray("AllowedDomain");
                 Gson gson = new Gson();
-                this.AllowedDomainList = gson.fromJson(data.toString(), new TypeToken<String>() {
+                this.AllowedDomainList = gson.fromJson(data.toString(), new TypeToken<List<String>>() {
                 }.getType());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -33,7 +33,7 @@ public class ConfigHandler {
         } else {
             try {
                 FileWriter fileWriter = new FileWriter(settingsjson);
-                fileWriter.write("{\"AllowedDomain\":[\n]");
+                fileWriter.write("{\"AllowedDomain\":[\"127.0.0.1\",\n\"localhost\"\n]}");
                 fileWriter.close();
                 System.out.println("[AuthDomain] 配置文件不存在，已自动生成");
             } catch (IOException e) {
