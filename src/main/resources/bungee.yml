@@ -1,0 +1,5 @@
+name: Authdomain
+version: ${project.version}
+main: cn.forgotdream.authdomain.Authdomain
+description: Check Domain
+author: Forgot_Dream
